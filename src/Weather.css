@@ -1,3 +1,31 @@
+.Weather h1,
+h3,
+p {
+  display: flex;
+  justify-content: center;
+}
+.weatherIcon {
+  display: grid;
+  place-items: center;
+}
+.Weather img {
+  width: 250px;
+}
+h1 {
+  font-size: 50px;
+}
+h3 {
+  font-size: 40px;
+}
 .Weather {
-  border: 1px solid black;
+  border: 1px solid azure;
+  border-radius: 10px;
+  max-width: 400px;
+  background-color: azure;
+}
+.Weather form {
+  padding: 20px;
+}
+p {
+  line-height: 2px;
 }
