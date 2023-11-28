@@ -1,16 +1,17 @@
 import React, { useState } from "react";
+import FormattedDate from "./FormattedDate";
 import axios from "axios";
 import "./Weather.css";
 
-export default function Weather(props) {
+export default function Weather() {
   const [weatherData, setWeatherData] = useState({ ready: false });
 
   function handleResponse(response) {
-    console.log(response.data);
+    console.log(response);
     setWeatherData({
       ready: true,
       temperature: response.data.temperature.current,
-      date: "Monday 22 Nov 07:00 ",
+      date: new Date(response.data.time),
       conditions: response.data.condition.description,
       humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
@@ -35,10 +36,15 @@ export default function Weather(props) {
             <h1 className="">{weatherData.city}</h1>
           </div>
           <div>
-            <p>{weatherData.date}</p>
+            <p>
+              <FormattedDate date={weatherData.date} />
+            </p>
           </div>
           <div className="weatherIcon">
-            <img src={weatherData.icon} alt={weatherData.conditions} />
+            <img
+              src="https://ssl.gstatic.com/onebox/weather/64/rain_s_cloudy.png"
+              alt="rainy"
+            />
           </div>
 
           <div>
@@ -62,8 +68,8 @@ export default function Weather(props) {
     );
   } else {
     const apiKey = "69fo350cf347a61tc6a94bf3497a464e";
-
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}`;
+    let city = "tokyo";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
     axios.get(apiUrl).then(handleResponse);
 
     return "Loading...";
