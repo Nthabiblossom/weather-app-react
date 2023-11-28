@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import FormattedDate from "./FormattedDate";
+import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
 import "./Weather.css";
 
@@ -11,7 +12,7 @@ export default function Weather() {
     setWeatherData({
       ready: true,
       temperature: response.data.temperature.current,
-      date: new Date(response.data.time),
+      date: new Date(response.data.time * 1000),
       conditions: response.data.condition.description,
       humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
@@ -33,6 +34,7 @@ export default function Weather() {
               />
               <button className="btn btn-success col-3">search</button>
             </form>
+            <WeatherInfo />
             <h1 className="">{weatherData.city}</h1>
           </div>
           <div>
