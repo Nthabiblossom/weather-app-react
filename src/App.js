@@ -5,8 +5,9 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <Weather />
+        <Weather defaultCity="Paris" />
         <br />
+
         <footer>
           Coded by Nthabi at{" "}
           <a href="https://www.shecodes.io/" target="_blank" rel="noreferrer">
