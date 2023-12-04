@@ -7,7 +7,7 @@ import "./Weather.css";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  //const [place, setPlace] = useState(city);
+  const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
     setWeatherData({
@@ -22,30 +22,33 @@ export default function Weather(props) {
     });
   }
 
-  //  function handleSubmit(event) {
-  //  event.preventDefault();
-  //search a place
-  //}
+  function search() {
+    const apiKey = "69fo350cf347a61tc6a94bf3497a464e";
 
-  //function handleCityChange(event) {
-  //setCity(event.target.value);
-  //alert(city);
-  //}
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityChange(event) {
+    setCity(event.target.value);
+  }
 
   if (weatherData.ready) {
     return (
       <div className="Weather mt-5 ">
         <div className="contents position-relative">
           <div className="row ">
-            <form
-              //onSubmit={handleSubmit}
-              className="mt-3"
-            >
+            <form onSubmit={handleSubmit} className="mt-3">
               <input
                 type="search"
                 placeholder="enter a city"
                 className="formControl col-9"
-                //onChange={handleCityChange}
+                onChange={handleCityChange}
               />
               <button className="btn btn-success col-3">search</button>
             </form>
@@ -55,11 +58,7 @@ export default function Weather(props) {
       </div>
     );
   } else {
-    const apiKey = "69fo350cf347a61tc6a94bf3497a464e";
-
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${props.defaultCity}&key=${apiKey}`;
-    axios.get(apiUrl).then(handleResponse);
-
+    search();
     return "Loading...";
   }
 }
