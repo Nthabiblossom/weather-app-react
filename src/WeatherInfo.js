@@ -12,11 +12,9 @@ export default function WeatherInfo(props) {
           <FormattedDate date={props.data.date} />
         </p>
       </div>
+
       <div className="weatherIcon">
-        <img
-          src="https://ssl.gstatic.com/onebox/weather/64/rain_s_cloudy.png"
-          alt="rainy"
-        />
+        <img src={props.data.iconUrl} alt={props.data.conditions} />
       </div>
 
       <div>
