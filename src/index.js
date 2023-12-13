@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.css";
 import "./index.css";
+import Forecast from "./Forecast";
 
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
@@ -9,7 +10,16 @@ import reportWebVitals from "./reportWebVitals";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <div className="container">
+      <div className="row">
+        <div className="col-6">
+          <App />
+        </div>
+        <div className="col-6">
+          <Forecast />
+        </div>
+      </div>
+    </div>
   </React.StrictMode>
 );
 
