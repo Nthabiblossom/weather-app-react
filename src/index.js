@@ -10,16 +10,7 @@ import reportWebVitals from "./reportWebVitals";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <div className="container">
-      <div className="row">
-        <div className="col-6">
-          <App />
-        </div>
-        <div className="col-6">
-          <Forecast />
-        </div>
-      </div>
-    </div>
+    <App />
   </React.StrictMode>
 );
 

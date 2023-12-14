@@ -4,6 +4,7 @@ import WeatherInfo from "./WeatherInfo";
 
 import axios from "axios";
 import "./Weather.css";
+import Forecast from "./Forecast";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
@@ -13,6 +14,7 @@ export default function Weather(props) {
     console.log(response.data);
     setWeatherData({
       ready: true,
+      coordinates: response.data.coordinates,
       temperature: response.data.temperature.current,
       date: new Date(response.data.time * 1000),
       conditions: response.data.condition.description,
@@ -42,19 +44,28 @@ export default function Weather(props) {
 
   if (weatherData.ready) {
     return (
-      <div className="Weather mt-5 ">
-        <div className="contents position-relative">
-          <div className="row ">
-            <form onSubmit={handleSubmit} className="mt-3">
-              <input
-                type="search"
-                placeholder="enter a city"
-                className="formControl col-9"
-                onChange={handleCityChange}
-              />
-              <button className="btn btn-success col-3">search</button>
-            </form>
-            <WeatherInfo data={weatherData} />
+      <div className="container">
+        <div className="row">
+          <div className="col-6">
+            <div className="Weather mt-5 ">
+              <div className="contents position-relative">
+                <div className="row ">
+                  <form onSubmit={handleSubmit} className="mt-3">
+                    <input
+                      type="search"
+                      placeholder="enter a city"
+                      className="formControl col-9"
+                      onChange={handleCityChange}
+                    />
+                    <button className="btn btn-success col-3">search</button>
+                  </form>
+                  <WeatherInfo data={weatherData} />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="col-6">
+            <Forecast coordinates={weatherData.coordinates} />
           </div>
         </div>
       </div>
