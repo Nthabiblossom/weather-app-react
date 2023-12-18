@@ -4,6 +4,7 @@ p {
   display: flex;
   justify-content: center;
 }
+
 .weatherIcon {
   size: 64px;
   display: grid;
