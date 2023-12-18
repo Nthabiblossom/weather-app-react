@@ -23,7 +23,7 @@ function App() {
         </a>{" "}
         and hosted on{" "}
         <a
-          href="https://github.com/Nthabiblossom"
+          href="https://superb-travesseiro-213f44.netlify.app/"
           target="_blank"
           rel="noreferrer"
         >
