@@ -1,6 +1,7 @@
 .forecast {
-  background-color: #feb58ec9;
+  background-color: #fcf3eefa;
+  border-radius: 10px;
 }
 .forecastIcon {
-  size: 20px;
+  size: 5px;
 }
